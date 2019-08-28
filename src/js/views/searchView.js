@@ -41,10 +41,17 @@ const renderRecipe = (recipe) => {
 
 }
 
-const renderNavigation = (page) => {
+
+const createButton(page, type) {
     
+}
+
+const renderNavigation = (page, count, resultPerPage) => {
+
+    const button = (page == 1 ? createButton(page,'next'): (page==resultPerPage) ? createButton(page,'prev') : ${createButton(page,'prev')} ${createButton(page,'next')});
 }
 
 export const renderResult = (recipes, page=1, resultsPerPage=10) => {
     recipes.slice((page * resultsPerPage) - resultsPerPage, page * resultsPerPage).forEach(renderRecipe);
+    renderNavigation(page = 1, recipes.length, resultPerPage = 10);
 }
