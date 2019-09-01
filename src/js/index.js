@@ -1,4 +1,6 @@
 import Search from "./models/Search";
+import Recipe from "./models/Search";
+
 import * as searchView from './views/searchView';
 import {element, renderLoader, clearLoader} from './views/cssElements';
 
@@ -36,4 +38,18 @@ element.searchResultPages.addEventListener('click',e => {
     }
 })
 
+const controlRecipe = async () => {
+    const id = window.location.hash.replace('#', '');
+    if(id) {
+        state.recipe = new Recipe(id);
+        await state.recipe.getRecipe();
+        console.log(recipe);
+    }
+    
+}
+
+//Recipe Controller
+window.addEventListener('hashchange', e => {
+    controlRecipe();
+});
 

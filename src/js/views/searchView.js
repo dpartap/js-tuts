@@ -27,7 +27,7 @@ const formatRecipeTitle = (recipeTitle, limit = 15) => {
 const renderRecipe = (recipe) => {
     const markup = `
     <li>
-        <a class="results__link results__link--active" href=${recipe.recipe_id}>
+        <a class="results__link results__link--active" href=#${recipe.recipe_id}>
             <figure class="results__fig">
                 <img src="${recipe.image_url}" alt="Test">
             </figure>
@@ -57,12 +57,10 @@ const renderNavigation = (page, count, totalPage) => {
 
     element.searchResultPages.innerHTML = '';
     const button = (page == 1 ? createButton(page,'next'): (page==totalPage) ? createButton(page,'prev') : `${createButton(page,'prev')} ${createButton(page,'next')}`);
-    console.log("output ->" +  button);
     element.searchResultPages.insertAdjacentHTML('afterbegin', button);
 }
 
 export const renderResult = (recipes, page=1, resultsPerPage=10) => {
-    console.log(page, resultsPerPage);
     recipes.slice((page * resultsPerPage) - resultsPerPage, page * resultsPerPage).forEach(renderRecipe);
     renderNavigation(page, recipes.length, Math.ceil(recipes.length/resultsPerPage));
 }
