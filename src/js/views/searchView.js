@@ -55,9 +55,11 @@ const createButton = (page, type) => `
 
 const renderNavigation = (page, count, totalPage) => {
 
-    element.searchResultPages.innerHTML = '';
-    const button = (page == 1 ? createButton(page,'next'): (page==totalPage) ? createButton(page,'prev') : `${createButton(page,'prev')} ${createButton(page,'next')}`);
-    element.searchResultPages.insertAdjacentHTML('afterbegin', button);
+    if (totalPage > 1) {
+        element.searchResultPages.innerHTML = '';
+        const button = (page == 1 ? createButton(page,'next'): (page==totalPage) ? createButton(page,'prev') : `${createButton(page,'prev')} ${createButton(page,'next')}`);
+        element.searchResultPages.insertAdjacentHTML('afterbegin', button);
+    }
 }
 
 export const renderResult = (recipes, page=1, resultsPerPage=10) => {
